@@ -33,26 +33,35 @@ const BestMatches = () => {
                     >
                         <p className="text-sm text-gray-400">{match.date} - {match.competition}</p>
 
-                        <div className="flex items-center justify-between mt-4">
-                            <div className="flex items-center space-x-4">
+                        {/* FIX: FLEX WRAP + GAP + TEXT SIZES */}
+                        <div className="flex flex-wrap items-center justify-between mt-4 gap-y-2">
+                            
+                            {/* Left Team */}
+                            <div className="flex items-center space-x-2 md:space-x-4">
                                 <img 
                                     src={match.teams.left.logo} 
                                     alt={match.teams.left.name} 
-                                    className="w-12 h-12 object-contain"
+                                    className="w-8 h-8 md:w-12 md:h-12 object-contain"
                                 />
-                                <h3 className="text-lg font-semibold text-white">{match.teams.left.name}</h3>
+                                <h3 className="text-sm md:text-lg font-semibold text-white">
+                                    {match.teams.left.name}
+                                </h3>
                             </div>
 
-                            <div className="text-3xl font-bold text-white">
+                            {/* Score */}
+                            <div className="text-base md:text-2xl font-bold text-white">
                                 {match.teams.left.score} - {match.teams.right.score}
                             </div>
 
-                            <div className="flex items-center space-x-4">
-                                <h3 className="text-lg font-semibold text-white">{match.teams.right.name}</h3>
+                            {/* Right Team */}
+                            <div className="flex items-center space-x-2 md:space-x-4">
+                                <h3 className="text-sm md:text-lg font-semibold text-white">
+                                    {match.teams.right.name}
+                                </h3>
                                 <img 
                                     src={match.teams.right.logo} 
                                     alt={match.teams.right.name} 
-                                    className="w-12 h-12 object-contain"
+                                    className="w-8 h-8 md:w-12 md:h-12 object-contain"
                                 />
                             </div>
                         </div>
