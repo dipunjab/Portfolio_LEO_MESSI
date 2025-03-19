@@ -1,18 +1,35 @@
 import { BEST_MATCHES } from "../constants";
+import { motion } from "framer-motion";
 
 const BestMatches = () => {
     return (
-        <section className="py-12">
-            <h2 className="text-4xl  text-center  mb-8">Best Matches</h2>
+        <motion.section 
+            className="py-12"
+            initial={{ opacity: 0, y: 50 }} 
+            whileInView={{ opacity: 1, y: 0 }} 
+            transition={{ duration: 1.2 }} 
+        >
+            <motion.h2 
+                className="text-4xl text-center mb-8"
+                initial={{ opacity: 0, y: -20 }} 
+                whileInView={{ opacity: 1, y: 0 }} 
+                transition={{ duration: 1 }} 
+            >
+                Best Matches
+            </motion.h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 px-6">
-                {BEST_MATCHES.map((match) => (
-                    <a 
+                {BEST_MATCHES.map((match, index) => (
+                    <motion.a 
                         key={match.id} 
                         href={match.link} 
                         target="_blank" 
                         rel="noopener noreferrer"
                         className="block p-6 rounded-xl shadow-sm backdrop-blur-2xl bg-gradient-to-br from-stone-800/10 to-stone-900 transition-transform duration-300 hover:scale-105 hover:shadow-stone-400"
+                        initial={{ opacity: 0, y: 40 }} 
+                        whileInView={{ opacity: 1, y: 0 }} 
+                        transition={{ duration: 0.8, delay: index * 0.2 }} 
+                        whileHover={{ scale: 1.07 }}
                     >
                         <p className="text-sm text-gray-400">{match.date} - {match.competition}</p>
 
@@ -43,10 +60,10 @@ const BestMatches = () => {
                         <p className="mt-4 text-stone-300 font-medium text-center">
                             Messi Goals: <span className="font-bold text-xl">{match.messiGoals}</span>
                         </p>
-                    </a>
+                    </motion.a>
                 ))}
             </div>
-        </section>
+        </motion.section>
     );
 };
 
